@@ -1,0 +1,54 @@
+---
+title: "Problem Statement"
+author: "Praveen Chander"
+date: "April 9, 2018"
+output: html_document
+--- 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Formal Problem Statement for Bank Marketing
+
+##Problem Statement: 
+Bank Customer Care professionals contacting the right audience for persuading the customers to avail deposit service
+
+## Target Audience: Bank/Customer
+
+## Goal:
+1. To determine the audience group subscribing for a deposit?
+2. Classification pattern among the subscribed candidates
+3. Major factors that determine the subscription 
+
+## Benefits:
+1. Saving time and cutting cost by contacting the right set of audience
+2. Will facilitate more deposit for the bank/Interest earnings for the Customers
+
+## Assumptions:
+Dataset to be used: Data Set provided by Portuguese banking institution
+http://archive.ics.uci.edu/ml/datasets/Bank+Marketing
+
+## Environment: 
+R for data visualization, MS Excel/CSV File as data source
+
+## In Scope/Out of Scope:
+1. Influencing Factors will be determined only on the available features
+2. Any key feature that has no data will be optimized on categories
+3. Available data will be sampled and used for training
+4. Accuracy can be calculated based on the testing data that has the outcomes already documented
+
+## Deliverables: 
+R report/chart with inferences
+
+## Project time Frame: 
+1.5 Months
+
+## Risks: 
+The Model will be built only on the available data, therefore the accuracy of the model is directly proportional to the quality of the data
+
+## Approach:
+1. Determining the Eigen vectors and dimension reduction
+2. Applying Classification algorithms
+3. Unsupervised learning using Expectation Maximization
+
