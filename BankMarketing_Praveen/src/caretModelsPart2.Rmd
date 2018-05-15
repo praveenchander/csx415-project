@@ -1,0 +1,70 @@
+---
+title: "caretModels"
+author: "Praveen"
+date: "May 15, 2018"
+output: html_document
+---
+
+```{r setup, echo=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+library("caret")
+library("ModelMetrics")
+library("ddalpha")
+library('DEoptimR')
+library('dimRed')
+library('gower')
+library('prodlim')
+
+bank_data<-read.csv('C:\\Users\\PraveenChander\\Desktop\\pySparking\\R Class for data science\\project\\BankMarketing_Praveen\\data\\bank.csv',header = T,sep = ';')
+
+# 
+# print(head(bank_data))
+# 
+# fit_rf_mod<-train(y ~.,data=bank_data,method="rf", trControl=trainControl(method="cv",number=5), prox=TRUE,allowParallel=TRUE)
+# 
+# print(fit_rf_mod)
+
+
+set.seed(100) #can provide any number for seed
+nall = nrow(bank_data) #total number of rows in data
+print(nall)
+
+ntrain = floor(0.98 * nall) # number of rows for train,70%
+print(ntrain)
+
+ntest = floor(0.02* nall) # number of rows for test, 30%
+index = seq(1:nall)
+print(index)
+
+trainIndex = sample(index, ntrain) #train data set
+train = bank_data[trainIndex,]
+
+testIndex = index[-trainIndex]
+test = bank_data[testIndex,]
+
+print(head(train))
+print(head(test))
+
+#writing to a csv file the test data to add more features 
+# write.csv(test, file = 'C:\\Users\\PraveenChander\\Desktop\\pySparking\\R Class for data science\\project\\BankMarketing_Praveen\\data\\bank_test.csv',,row.names=FALSE, na="",col.names=TRUE, sep=';')
+
+bank_data_test<-read.csv('C:\\Users\\PraveenChander\\Desktop\\pySparking\\R Class for data science\\project\\BankMarketing_Praveen\\data\\bank_test.csv',header = T)
+
+fit_rf_mod_test<-train(y ~.,data=bank_data_test,method="rf", trControl=trainControl(method="cv",number=5), prox=TRUE,allowParallel=TRUE)
+
+print(fit_rf_mod_test)
+plot(fit_rf_mod_test)
+
+fit_rf_mod<-train(y ~.,data=train,method="rf", trControl=trainControl(method="cv",number=5), prox=TRUE,allowParallel=TRUE)
+
+print(fit_rf_mod)
+plot(fit_rf_mod)
+
+
+
+# fit_nn_mod<-train(y ~.,data=train,method="brnn", trControl=trainControl(method="cv",number=5), prox=TRUE,allowParallel=TRUE)
+# 
+# print(fit_nn_mod)
+# plot(fit_nn_mod)
