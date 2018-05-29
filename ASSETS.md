@@ -2,7 +2,8 @@ Formal Problem Statement - Describes the goal and approach to be followed for th
 <Available in the main folder and reports>
 
 
-Model Performance Statement - Calculating the model performance with Random Forest, Gradient Linear Model & Decesion Tree. Also, Identifying the Features that has more impact on the outcomes (Assignment 2)
+Model Performance Statement - Calculating the model performance with Random Forest, Gradient Linear Model & Decesion Tree using test data. 
+Also, Identifying the Features that has more impact on the outcomes (Assignment 2)
 <Available in the main folder and reports>
 
 
@@ -20,3 +21,8 @@ Final - caretModel Evaluation -
 This markdown document will provide the final model Random Forest performance plot and confusion matrix with that of Support Vector Model 
 <HTML document is available in the main folder and reports>
 <caretModels_bankMarketing.Rmd - data file path for bank.csv has to be updated after deployment [MANDATORY]>
+
+
+Package -
+Developed a package called splittingData, this is used to genetrate random test data with 30 Percent of the original training data available
+<Available in the lib folder - this has to be installed using the DEV tools wherever the program is being deployed[MANDATORY]>
