@@ -1,0 +1,109 @@
+---
+title: "caretModels"
+author: "Praveen"
+date: "May 28, 2018"
+output: html_document
+---
+
+```{r setup, echo=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+library("caret")
+library("ModelMetrics")
+library("ddalpha")
+library('DEoptimR')
+library('dimRed')
+library('gower')
+library('prodlim')
+library('splittingData')
+
+
+bank_data<-read.csv('C:\\Users\\PraveenChander\\Desktop\\pySparking\\Class 2 - Data Science Principles and Practice\\practice\\bank.csv',header = T,sep = ';')
+
+set.seed(100) #can provide any number for seed
+nall = nrow(bank_data) #total number of rows in data
+print(nall)
+
+ntrain = floor(0.70 * nall) # number of rows for train,70%
+print(ntrain)
+
+ntest = floor(0.30* nall) # number of rows for test, 30%
+index = seq(1:nall)
+print(index)
+
+trainIndex = sample(index, ntrain) #train data set
+train = bank_data[trainIndex,]
+
+testIndex = index[-trainIndex]
+# test = bank_data[testIndex,]
+test = splitFile(bank_data)
+print(nrow(test))
+
+print(head(train))
+print(head(test))
+
+#writing to a csv file the test data to add more features 
+
+write.csv(test, file = 'C:\\Users\\PraveenChander\\Desktop\\pySparking\\Class 2 - Data Science Principles and Practice\\practice\\bank_test_30percent.csv',,row.names=FALSE, na="",col.names=TRUE, sep=';')
+
+fit_rf_mod<-train(y ~ age + job + marital + education + default + balance + housing + loan + contact + day + month + duration + campaign + pdays + previous + poutcome,data=train,method="rf", trControl=trainControl(method="cv",number=5), prox=TRUE,allowParallel=TRUE)
+
+print(fit_rf_mod)
+plot(fit_rf_mod)
+
+predictions_rf <- predict(object=fit_rf_mod, test)
+print(predictions_rf)
+confusionRF <- confusionMatrix(predictions_rf, test$y)
+ctable_rf <- as.table(matrix(c(confusionRF), nrow = 2, byrow = TRUE))
+fourfoldplot(ctable_rf, color = c("#CC6666", "#99CC99"),
+             conf.level = 0, margin = 1, main = "Confusion Matrix")
+
+
+fitControl <- trainControl(method = "repeatedcv",
+                           number = 10,
+                           repeats = 10,
+                           ## Estimate class probabilities
+                           classProbs = TRUE,
+                           ## Evaluate performance using 
+                           ## the following function
+                           summaryFunction = twoClassSummary)
+set.seed(825)
+svmFit <- train(y ~ age + job + marital + education + default + balance + housing + loan + contact + day + month + duration + campaign + pdays + previous + poutcome, data = train, 
+                 method = "svmRadial", 
+                 trControl = fitControl, 
+                 preProc = c("center", "scale"),
+                 tuneLength = 8,
+                 metric = "ROC")
+svmFit   
+
+predictions_svm <- predict(object=svmFit, test)
+print(predictions_svm)
+confusionSVM <- confusionMatrix(predictions_svm, test$y)
+ctable_svm <- as.table(matrix(c(confusionSVM), nrow = 2, byrow = TRUE))
+fourfoldplot(ctable_svm, color = c("#CC6666", "#99CC99"),
+             conf.level = 0, margin = 1, main = "Confusion Matrix")
+
+test_rec <- data.frame(
+   age = c (35), 
+   job = c("management"),
+   marital = c("single"), 
+   education = c("tertiary"),
+   default = c("no"), 
+   balance = c(1350), 
+   housing = c("yes"), 
+   loan = c("no"),
+   contact = c("cellular"), 
+   day = c(16), 
+   month = c("apr"), 
+   duration = c(185), 
+   campaign = c(1), 
+   pdays = c(330), 
+   previous = c(1), 
+   poutcome = c("failure"), 
+   stringsAsFactors = FALSE
+)
+
+predictions_svm2 <- predict(object=svmFit, test_rec)
+print(predictions_svm2)
+
