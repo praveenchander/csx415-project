@@ -5,16 +5,18 @@ date: "April 17, 2018"
 output: html_document
 ---
 
-```{r setup, echo=TRUE}
+```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 
 library("ggplot2")
 library("dplyr")
 library("rpart")
 library("partykit")
+
 ##Loading the csv Data file:
 
-raw_data <- read.csv('C:\\Users\\PraveenChander\\Desktop\\pySparking\\R Class for data science\\project\\BankMarketing_Praveen\\data\\bank.csv', header = T,sep = ';')
+raw_data <- read.csv('C:\\Users\\PraveenChander\\Desktop\\pySparking\\Class 2 - Data Science Principles and Practice\\practice\\bank.csv', header = T,sep = ';')
 head(raw_data)
 
 # plot the relationship between Age and the Subscription y (Bar Graph)

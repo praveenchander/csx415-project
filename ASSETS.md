@@ -1,3 +1,22 @@
-Formal Problem Statement - https://github.com/praveenchander/project/blob/master/BankMarketing_Praveen/docs/Problem_Statement.html
-Data File - https://github.com/praveenchander/project/tree/master/BankMarketing_Praveen/data/bank.csv
-Initial Project Performance - https://github.com/praveenchander/project/blob/master/BankMarketing_Praveen/docs/project-performance_Praveen.Rmd
+Formal Problem Statement - Describes the goal and approach to be followed for the project execution (Assignment 1)
+<Available in the main folder and reports>
+
+
+Model Performance Statement - Calculating the model performance with Random Forest, Gradient Linear Model & Decesion Tree. Also, Identifying the Features that has more impact on the outcomes (Assignment 2)
+<Available in the main folder and reports>
+
+
+Data File - bank.csv
+<Available in the Data folder, the folder path has to be changed in 2 places
+1. server.R in the deploy folder, 2. caretModels_bankMarketing.Rmd in src folder> 
+
+
+Shiny R Code - 
+In order to facilitate end user to key-in record and predict the out come, ui.R & server.R are available.
+<server.R - data file path for bank.csv has to be updated after deployment [MANDATORY]>
+
+
+Final - caretModel Evaluation -
+This markdown document will provide the final model Random Forest performance plot and confusion matrix with that of Support Vector Model 
+<HTML document is available in the main folder and reports>
+<caretModels_bankMarketing.Rmd - data file path for bank.csv has to be updated after deployment [MANDATORY]>

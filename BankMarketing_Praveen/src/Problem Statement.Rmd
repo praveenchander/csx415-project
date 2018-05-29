@@ -39,7 +39,7 @@ R for data visualization, MS Excel/CSV File as data source
 4. Accuracy can be calculated based on the testing data that has the outcomes already documented
 
 ## Deliverables: 
-R report/chart with inferences
+R Markdown document/Shiny R for user interface with inferences
 
 ## Project time Frame: 
 1.5 Months
@@ -48,7 +48,8 @@ R report/chart with inferences
 The Model will be built only on the available data, therefore the accuracy of the model is directly proportional to the quality of the data
 
 ## Approach:
-1. Determining the Eigen vectors and dimension reduction
-2. Applying Classification algorithms
-3. Unsupervised learning using Expectation Maximization
+1. Applying Classification Random Forest algorithm
+2. Applying Classification Support Vector Machines algorithm
+3. Calculate the performance metric between two approaches
+4. Provide capability for end user to enter any record and predict what are the outputs of each method
 
