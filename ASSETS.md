@@ -26,3 +26,6 @@ This markdown document will provide the final model Random Forest performance pl
 Package -
 Developed a package called splittingData, this is used to genetrate random test data with 30 Percent of the original training data available
 <Available in the lib folder - this has to be installed using the DEV tools wherever the program is being deployed[MANDATORY]>
+
+
+Deployed Application - Bank Marketing Application deployed to Shinny cloud for prediction - https://praveentestapps.shinyapps.io/bankMarketing/
